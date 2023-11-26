@@ -1,0 +1,18 @@
+view photo:
+  title: 'View photos'
+create photo:
+  title: 'Create photos'
+edit own photo:
+  title: 'Edit own photos'
+delete own photo:
+  title: 'Delete own photos'
+edit any photo:
+  title: 'Edit any photo'
+  restrict access: true
+  description: 'User can view and edit any photo in any photo album.'
+delete any photo:
+  title: 'Delete any photo'
+  restrict access: true
+  description: 'User can delete any photo in any photo album.'
+view original:
+  title: 'View original image'

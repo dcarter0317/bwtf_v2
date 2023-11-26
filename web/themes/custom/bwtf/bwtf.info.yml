@@ -1,0 +1,25 @@
+name: BWTF 2.0
+type: theme
+base theme: stable9
+version: VERSION
+description: A custom theme Drupal 8 9 10 for Ben's World of Transformers website..
+core_version_requirement: ^8 || ^9 || ^10
+core: 8.x
+screenshot: screenshot.png
+
+# REGIONS
+regions:
+  header: Header
+  main_menu: Main Menu
+  breadcrumbs: Breadcrumbs
+  simple_ads: Simple Ads
+  hero: Hero
+  sidebar: Sidebar
+  content: Content
+  footer: Footer
+  page_top: Page top
+  page_bottom: Page bottom
+
+# ASSETS
+libraries:
+  - bwtf/global-assets

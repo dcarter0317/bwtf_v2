@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Hooks & functions for delete_all module.
+ */
+
+include_once \Drupal::service('extension.list.module')->getPath('delete_all') . '/includes/delete_all.content.batch.inc';
+include_once \Drupal::service('extension.list.module')->getPath('delete_all') . '/includes/delete_all.entities.batch.inc';
+include_once \Drupal::service('extension.list.module')->getPath('delete_all') . '/includes/delete_all.user.batch.inc';
+
+/**
+ * Implements hook_help().
+ */
+function delete_all_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match)
+{
+  switch ($route_name) {
+      // Main module help for the delete_all module.
+    case 'help.page.delete_all':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module is used to delete all content and/or users from a site. This is mainly a developer tool, which can come in handy in several cases, listed below.') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li type="1">' . t('This is a test site that the client was using for a period of time, and they must clean it up before starting with real data.') . '</li>';
+      $output .= '<li type="1">' . t('You are testing something that creates a lot of nodes (e.g. aggregator), and want to do it over and over again.') . '</li>';
+      $output .= '<li type="1">' . t('You created a site in the past and want to replicate it again, but with new content.') . '</li>';
+      $output .= '</ul>';
+      $output .= '<p>' . t('The usual way to do this is to go to Administer -> Content then select all the nodes and delete them. This works if you have a handful of nodes only. If you have hundreds or thousands of nodes, then it is not a practical solution.') . '</p>';
+      $output .= '<h3>Usage</h3>';
+      $output .= '<p>' . t('You will find links to this actions navigating to admin/config/development.') . '</p>';
+      $output .= '<p>' . t('There you will find two links:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li type="1">' . t('Batch Delete Content (/admin/content/delete_content)') . '</li>';
+      $output .= '<li type="1">' . t('Batch Delete Account (/admin/people/delete_people).') . '</li>';
+      $output .= '</ul>';
+      $output .= '<h3>Drush commands</h3>';
+      $output .= '<p>' . t('In alternative, you can use the drush commands:') . '</p>';
+      $output .= '<ul>';
+      $output .= '<li type="1">' . t('delete-all-delete-content (dadc) deletes all content.') . '</li>';
+      $output .= '<li type="1">' . t('delete-all-delete-entities (dade) deletes entities.') . '</li>';
+      $output .= '<li type="1">' . t('delete-all-delete-users (dadu) deletes users.') . '</li>';
+      $output .= '</ul>';
+
+      return $output;
+
+    default:
+  }
+}
