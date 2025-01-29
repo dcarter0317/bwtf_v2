@@ -1,0 +1,8 @@
+status: true
+dependencies:
+  module:
+    - media
+id: media.media_photoswipe
+label: 'Media photoswipe'
+targetEntityType: media
+cache: true

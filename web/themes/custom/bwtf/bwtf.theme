@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Functions to support theming in the bwtf theme.
+ */
+
+ use Drupal\file\Entity\File;
+ use Drupal\Core\Render\Markup;
+ use Drupal\Core\Render\Renderer;
+ use Drupal\Component\Utility\Html;
+ use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+ function bwtf_preprocess_page(&$variables) {
+   $variables['slider_display'] = theme_get_setting('slider_display', 'bwtf');
+ 
+   // Helper function to process slide data.
+   function process_slide_data($slide_number, &$variables) {
+     $variables["slide{$slide_number}_title"] = theme_get_setting("slide{$slide_number}_title", 'bwtf');
+ 
+     // Render text safely
+     $desc = theme_get_setting("slide{$slide_number}_desc", 'bwtf');
+     $variables["slide{$slide_number}_desc"] = [
+       '#type' => 'processed_text',
+       '#text' => $desc,
+       '#format' => 'full_html',
+     ];
+ 
+     $variables["slide{$slide_number}_url"] = theme_get_setting("slide{$slide_number}_url", 'bwtf');
+     $variables["slide{$slide_number}_link_text"] = theme_get_setting("slide{$slide_number}_link_text", 'bwtf');
+ 
+     // Handle images properly
+     $fid = theme_get_setting("slide{$slide_number}_image", 'bwtf');
+     if (!empty($fid) && is_array($fid)) {
+       $file = File::load($fid[0]);
+       if ($file) {
+         $uri = $file->getFileUri();
+         $image_path = \Drupal::service('file_url_generator')->generateAbsoluteString($uri);
+       }
+     }
+ 
+     // Set default image if no valid file
+     if (empty($image_path)) {
+       $image_path = \Drupal::service('extension.list.theme')->getPath('bwtf') . '/assets/imgs/default_slide.jpg';
+     }
+ 
+     $variables["slide{$slide_number}_image"] = $image_path;
+   }
+ 
+   // Process slides dynamically (6 slides in total).
+   for ($i = 1; $i <= 6; $i++) {
+     process_slide_data($i, $variables);
+   }
+ }
+ 
+ 

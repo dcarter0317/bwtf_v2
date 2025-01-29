@@ -1,0 +1,362 @@
+section {
+  margin-bottom: 20px;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  padding: 20px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  z-index: 1000;
+
+  .bar {
+    width: 35px;
+    height: 3px;
+    margin: 0 0 5px;
+    background-color: $clr-primary;
+    transition: all 0.4s ease;
+  }
+  &.open {
+    .bar-1 {
+      transform: rotate(40deg);
+    }
+    .bar-2 {
+      opacity: 0;
+    }
+    .bar-3 {
+      transform: rotate(-40deg);
+      margin-top: -16px;
+    }
+  }
+  @include breakpoint-min($bp-lg) {
+    display: none;
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+
+  &.btn__primary {
+    color: $clr-white;
+    border: 1px solid $clr-white;
+    background: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: $clr-primary;
+      border: 0;
+    }
+  }
+
+  &.btn-secondary {
+    color: $clr-link;
+    border: 1px solid $clr-link;
+
+    &:hover {
+      background: $clr-link;
+      color: $clr-white;
+    }
+  }
+}
+
+.nav-container {
+  position: relative;
+  margin: 50px 0;
+}
+
+.nav {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100vh;
+  text-align: center;
+  list-style: none;
+  text-transform: uppercase;
+  padding: 20px 0;
+  background: rgba(0, 0, 0, 0.9);
+
+  @include breakpoint-min($bp-lg) {
+    display: flex;
+    opacity: 1;
+    z-index: 10;
+    width: 100vw;
+    text-transform: capitalize;
+    background: initial;
+    min-height: auto;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-33%, -130%);
+  }
+
+  li {
+    padding: 10px 0;
+    @include breakpoint-min($bp-med) {
+      padding: 10px;
+    }
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid $clr-white;
+
+    @include breakpoint-min($bp-med) {
+      border: none;
+    }
+  }
+
+  li a {
+    display: block;
+    color: $clr-white;
+    letter-spacing: 5px;
+    @include breakpoint-min($bp-lg) {
+      letter-spacing: initial;
+      color: initial;
+    }
+  }
+
+  &.nav-open {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.hero {
+  height: 53vh;
+  overflow: hidden;
+
+  @include breakpoint-min($bp-lg) {
+    height: 70vh;
+  }
+}
+
+.content {
+  @include breakpoint-min($bp-med) {
+    display: grid;
+    grid-template-columns: 68vw 27vw;
+    gap: 2vw;
+  }
+}
+
+.simple-ads {
+  margin-bottom: 20px;
+}
+
+.article-cards {
+  @include breakpoint-min($bp-med) {
+    display: grid;
+    grid-template-columns: 69.3%;
+  }
+}
+
+.article-card {
+  border: 1px solid $clr-text-color-dark;
+  border-radius: 0 0 5px 5px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+
+  @include breakpoint-min($bp-med) {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+.article-card__media {
+  margin-top: 0;
+  padding-left: 10px;
+
+  img {
+    background: transparent;
+  }
+}
+
+.article-card__text {
+  padding: 20px 25px;
+}
+
+.article-card__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-card__eyebrow,
+.article-card__date {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.article-card__eyebrow {
+  color: $clr-light-blue;
+}
+.article-card__date {
+  color: $clr-grey-light;
+}
+
+.article-card__body {
+  padding: 20px 0;
+  border-bottom: 1px solid $clr-border-light;
+}
+
+.article-card__title {
+  @include breakpoint-min($bp-med) {
+    font-size: 2.6rem;
+  }
+}
+
+.article-card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  @include breakpoint-min($bp-med) {
+    font-size: 1.6rem;
+  }
+}
+
+.article-card__footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+aside {
+  text-align: center;
+  @include breakpoint-min($bp-med) {
+    text-align: initial;
+  }
+
+  .social-sponsor {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    @include breakpoint-min($bp-med) {
+      grid-template-columns: 1fr;
+    }
+  }
+  .social {
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  .sponsor {
+    a {
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  .amazon-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    @include breakpoint-min($bp-med) {
+      grid-template-columns: repeat(2, 37%);
+    }
+
+    .amazon-card {
+      iframe {
+        height: 240px;
+        width: 120px;
+      }
+    }
+  }
+}
+
+.search-form {
+  position: relative;
+  input[type="search"] {
+    width: 100%;
+    background: none;
+    border: 1px solid $clr-border-light;
+    border-radius: 4px;
+    color: $clr-deep-gray;
+    padding: 8px 10px;
+    margin-top: 3rem;
+    font-family: inherit;
+    font-size: 1.1rem;
+    outline: none;
+
+    &::placeholder {
+      color: $clr-grey-light;
+    }
+  }
+  .search-icon {
+    background: url("./imgs/search-icon.png");
+    height: 16px;
+    width: 16px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-5%, -50%);
+    pointer-events: none;
+  }
+}
+
+footer {
+  background: $clr-primary;
+  color: $clr-border-light;
+  text-align: center;
+  padding: 20px 10px;
+  width: 100vw;
+
+  .footer-social {
+    padding: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    @include breakpoint-min($bp-med) {
+      justify-content: start;
+      padding-left: 0;
+    }
+  }
+
+  p {
+    font-size: 0.6rem;
+    font-weight: 300;
+
+    @include breakpoint-min($bp-med) {
+      font-size: 1.1rem;
+    }
+  }
+
+  a,
+  a:visited {
+    color: $clr-link;
+  }
+  @include breakpoint-min($bp-med) {
+    text-align: left;
+  }
+}

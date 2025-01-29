@@ -1,0 +1,235 @@
+@import "libraries";
+@import "variables";
+@import "mixins";
+@import "components";
+
+:root {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: 1.8rem;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  background-size: cover;
+  object-fit: cover;
+}
+
+h1,
+h2 {
+  font-weight: 400;
+  text-transform: capitalize;
+}
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 4.6rem;
+}
+h3 {
+  font-size: 3.2rem;
+}
+h4 {
+  font-size: 2.4rem;
+}
+h5 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+h6 {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+p {
+  font-size: 1.7rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+table,
+ul,
+ol,
+div,
+dt {
+  margin: 1rem 0;
+}
+
+ul {
+  list-style: none;
+}
+
+ol {
+  margin-left: 2rem;
+}
+
+.container {
+  width: 95vw;
+  margin: auto;
+
+  @include breakpoint-min($bp-med) {
+    width: 98vw;
+    margin: 0 auto;
+  }
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  padding: 20px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  z-index: 1000;
+
+  .bar {
+    width: 35px;
+    height: 3px;
+    margin: 0 0 5px;
+    background-color: $clr-primary;
+    transition: all 0.4s ease;
+  }
+  &.open {
+    .bar-1 {
+      transform: rotate(40deg);
+    }
+    .bar-2 {
+      opacity: 0;
+    }
+    .bar-3 {
+      transform: rotate(-40deg);
+      margin-top: -16px;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+
+  &.btn--primary {
+    color: $clr-white;
+    border: 1px solid $clr-white;
+    background: rgba(255, 255, 255, 0.3);
+
+    &:hover {
+      background: $clr-primary;
+      border: 0;
+    }
+  }
+
+  &.btn--secondary {
+    color: $clr-link;
+    border: 1px solid $clr-link;
+
+    &:hover {
+      background: $clr-link;
+      color: $clr-white;
+    }
+  }
+}
+
+.slide-overlay {
+  position: absolute;
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+}
+
+.swiper-slide {
+  position: relative;
+  height: 100vh;
+
+  .slide-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    @include breakpoint-min($bp-lg) {
+      height: 75%;
+    }
+  }
+
+  .slide-text {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, 0%);
+    color: $clr-white;
+    z-index: 100;
+
+    @include breakpoint-min($bp-lg) {
+      top: 33%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .slide-text-title {
+    font-size: 1.4em;
+    text-transform: uppercase;
+  }
+
+  .slide-text-description {
+    font-size: .6em;
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+
+  .slide-text .btn {
+    margin-top: 20px;
+
+    &:hover {
+      background: $clr-link;
+    }
+  }
+}

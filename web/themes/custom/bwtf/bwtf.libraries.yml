@@ -1,0 +1,6 @@
+global-assets:
+  css:
+    theme:
+      assets/css/bwtf_v2.css: {}
+  js:
+    assets/js/bwtf_v2.js: {}

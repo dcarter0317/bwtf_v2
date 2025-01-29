@@ -1,0 +1,15 @@
+name: Media Gallery
+type: module
+description: 'The Media Gallery module allows you to create and manage galleries of media items on your Drupal site.'
+package: media
+core_version_requirement: ^10 || ^11
+configure: entity.media_gallery.settings
+dependencies:
+  - drupal:text
+  - drupal:media_library
+  - photoswipe:photoswipe (>= 5)
+
+# Information added by Drupal.org packaging script on 2024-12-24
+version: '3.0.1'
+project: 'media_gallery'
+datestamp: 1735035283
